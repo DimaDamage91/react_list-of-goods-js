@@ -24,26 +24,26 @@ export const App = () => {
   const [activeSort, setActiveSort] = useState('');
   const [originalGoods, setOriginalGoods] = useState(goodsFromServer);
 
-  const reset = () => {
+  const resetGoodsOrder = () => {
     setVisibleGoods(goodsFromServer);
     setActiveSort('');
   };
 
-  const sortByAlphabet = () => {
+  const sortAlphabetically = () => {
     setVisibleGoods(
       [...visibleGoods].sort((good1, good2) => good1.localeCompare(good2))
     );
     setActiveSort(sortFieldAlphabet);
   };
 
-  const sortByLength = () => {
+  const sortByLengthOfGoods = () => {
     setVisibleGoods(
       [...visibleGoods].sort((good1, good2) => good1.length - good2.length)
     );
     setActiveSort(sortFieldLength);
   }
 
-  const reverseGoods = () => {
+  const reverseOrderOfGoods = () => {
     setVisibleGoods(
       [...visibleGoods].reverse()
     );
@@ -54,7 +54,7 @@ export const App = () => {
   <div className="section content">
     <div className="buttons">
       <button
-        onClick={sortByAlphabet}
+        onClick={sortAlphabetically}
         type="button"
         className={`button is-info ${activeSort === sortFieldAlphabet ? '' : 'is-light'}`}
       >
@@ -62,7 +62,7 @@ export const App = () => {
       </button>
 
       <button
-        onClick={sortByLength}
+        onClick={sortByLengthOfGoods}
         type="button"
         className={`button is-success ${activeSort === sortFieldLength ? '' : 'is-light'}`}
       >
@@ -70,7 +70,7 @@ export const App = () => {
       </button>
 
       <button
-        onClick={reverseGoods}
+        onClick={reverseOrderOfGoods}
         type="button"
         className={`button is-warning ${activeSort === reverseFieldGoods ? '' : 'is-light'}`}
       >
@@ -78,7 +78,7 @@ export const App = () => {
       </button>
      {JSON.stringify(visibleGoods) !== JSON.stringify(originalGoods) && (
       <button
-        onClick={reset}
+        onClick={resetGoodsOrder}
         type="button"
         className="button is-danger is-light"
       >
