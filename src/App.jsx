@@ -24,26 +24,26 @@ export const App = () => {
   const [activeSort, setActiveSort] = useState('');
   const [originalGoods, setOriginalGoods] = useState(goodsFromServer);
 
-  const resetGoodsOrder = () => {
+  const resetGoodsOfOrder = () => {
     setVisibleGoods(goodsFromServer);
     setActiveSort('');
   };
 
-  const sortAlphabetically = () => {
+  const sortGoodsAlphabetically = () => {
     setVisibleGoods(
       [...visibleGoods].sort((good1, good2) => good1.localeCompare(good2))
     );
     setActiveSort(sortFieldAlphabet);
   };
 
-  const sortByLengthOfGoods = () => {
+  const sortGoodsByLength = () => {
     setVisibleGoods(
       [...visibleGoods].sort((good1, good2) => good1.length - good2.length)
     );
     setActiveSort(sortFieldLength);
   }
 
-  const reverseOrderOfGoods = () => {
+  const reverseGoodsOrder = () => {
     setVisibleGoods(
       [...visibleGoods].reverse()
     );
@@ -54,7 +54,7 @@ export const App = () => {
   <div className="section content">
     <div className="buttons">
       <button
-        onClick={sortAlphabetically}
+        onClick={sortGoodsAlphabetically}
         type="button"
         className={`button is-info ${activeSort === sortFieldAlphabet ? '' : 'is-light'}`}
       >
@@ -62,7 +62,7 @@ export const App = () => {
       </button>
 
       <button
-        onClick={sortByLengthOfGoods}
+        onClick={sortGoodsByLength}
         type="button"
         className={`button is-success ${activeSort === sortFieldLength ? '' : 'is-light'}`}
       >
@@ -70,7 +70,7 @@ export const App = () => {
       </button>
 
       <button
-        onClick={reverseOrderOfGoods}
+        onClick={reverseGoodsOrder}
         type="button"
         className={`button is-warning ${activeSort === reverseFieldGoods ? '' : 'is-light'}`}
       >
@@ -78,7 +78,7 @@ export const App = () => {
       </button>
      {JSON.stringify(visibleGoods) !== JSON.stringify(originalGoods) && (
       <button
-        onClick={resetGoodsOrder}
+        onClick={resetGoodsOfOrder}
         type="button"
         className="button is-danger is-light"
       >
